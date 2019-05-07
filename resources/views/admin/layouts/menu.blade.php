@@ -19,10 +19,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin/the-loai/list">List</a>
+                                    <a href="{{ route('category.list') }}">List</a>
                                 </li>
                                 <li>
-                                    <a href="admin/the-loai/add">Add</a>
+                                    <a href="{{ route('category.add') }}">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -31,22 +31,10 @@
                             <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin/loai-tin/list">List</a>
+                                    <a href="{{ route('product.list') }}">List</a>
                                 </li>
                                 <li>
-                                    <a href="admin/loai-tin/add">Add</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> News<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="admin/tin-tuc/list">List</a>
-                                </li>
-                                <li>
-                                    <a href="admin/tin-tuc/add">Add</a>
+                                    <a href="{{ route('product.add') }}">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -55,10 +43,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Slide<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin/slide/list">List</a>
+                                    <a href="{{ route('slide.list') }}">List</a>
                                 </li>
                                 <li>
-                                    <a href="admin/slide/add">Add</a>
+                                    <a href="{{ route('slide.add') }}">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -67,10 +55,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin/user/list">List</a>
+                                    <a href="{{ route('user.list') }}">List</a>
                                 </li>
                                 <li>
-                                    <a href="admin/user/add">Add</a>
+                                    <a href="{{ route('user.add') }}">Add</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

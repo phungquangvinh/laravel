@@ -18,7 +18,7 @@ class CreateComment extends Migration
             $table->integer('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');
             $table->integer('idCategory')->unsigned();
-            $table->foreign('idCategory')->references('id_product')->on('category');
+            $table->foreign('idCategory')->references('id')->on('product');
             $table->string('NoiDung');
             $table->timestamps();
         });

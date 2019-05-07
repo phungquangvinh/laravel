@@ -17,7 +17,8 @@ class MyController extends Controller
 {
     public function getIndex()
     {
-        return view('index');
+        $slide = db::table('slide')->get();
+        return view('index', ['slide'=>$slide]);
     }
     public function getShop()
     {

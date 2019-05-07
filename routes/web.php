@@ -64,25 +64,25 @@ Route::group(['prefix'=>'admin'], function(){
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('list', [
 			'as' => 'user.list',
-			'uses' => 'AdminController@list'
+			'uses' => 'UserController@list'
 		]);
 
 		Route::get('/add', [
 			'as' => 'user.add',
-			'uses' => 'AdminController@add'
+			'uses' => 'UserController@add'
 		]);
 
-		Route::post('/add', 'AdminController@postAdd');
+		Route::post('/add', 'UserController@postAdd');
 
 	    Route::get('/edit/{id}', [
 			'as' => 'user.edit',
-			'uses' => 'AdminController@getEdit'
+			'uses' => 'UserController@getEdit'
 		]);
-		Route::post('/edit/{id}', 'AdminController@postEdit');
+		Route::post('/edit/{id}', 'UserController@postEdit');
 
 		Route::get('/delete/{id}', [
 			'as' => 'user.delete',
-			'uses' => 'AdminController@getDelete'
+			'uses' => 'UserController@getDelete'
 		]);
 	});
 
@@ -110,6 +110,81 @@ Route::group(['prefix'=>'admin'], function(){
 			'uses' => 'RoleController@getDelete'
 		]);
 	});
+
+	Route::group(['prefix'=>'category'], function(){
+		Route::get('list', [
+			'as' => 'category.list',
+			'uses' => 'CategoryController@list'
+		]);
+
+		Route::get('/add', [
+			'as' => 'category.add',
+			'uses' => 'CategoryController@add'
+		]);
+
+		Route::post('/add', 'CategoryController@postAdd');
+
+	    Route::get('/edit/{id}', [
+			'as' => 'category.edit',
+			'uses' => 'CategoryController@getEdit'
+		]);
+		Route::post('/edit/{id}', 'CategoryController@postEdit');
+
+		Route::get('/delete/{id}', [
+			'as' => 'category.delete',
+			'uses' => 'CategoryController@getDelete'
+		]);
+	});
+
+	Route::group(['prefix'=>'product'], function(){
+		Route::get('list', [
+			'as' => 'product.list',
+			'uses' => 'ProductController@list'
+		]);
+
+		Route::get('/add', [
+			'as' => 'product.add',
+			'uses' => 'ProductController@add'
+		]);
+
+		Route::post('/add', 'ProductController@postAdd');
+
+	    Route::get('/edit/{id}', [
+			'as' => 'product.edit',
+			'uses' => 'ProductController@getEdit'
+		]);
+		Route::post('/edit/{id}', 'ProductController@postEdit');
+
+		Route::get('/delete/{id}', [
+			'as' => 'product.delete',
+			'uses' => 'ProductController@getDelete'
+		]);
+	});
+
+	Route::group(['prefix'=>'slide'], function(){
+		Route::get('list', [
+			'as' => 'slide.list',
+			'uses' => 'SlideController@list'
+		]);
+
+		Route::get('/add', [
+			'as' => 'slide.add',
+			'uses' => 'SlideController@add'
+		]);
+
+		Route::post('/add', 'SlideController@postAdd');
+
+	    Route::get('/edit/{id}', [
+			'as' => 'slide.edit',
+			'uses' => 'SlideController@getEdit'
+		]);
+		Route::post('/edit/{id}', 'SlideController@postEdit');
+
+		Route::get('/delete/{id}', [
+			'as' => 'slide.delete',
+			'uses' => 'SlideController@getDelete'
+		]);
+	});
 });
 
 Route::get('test', [ 'as' => 'test', 'uses' => 'MyController@test']);
@@ -117,3 +192,5 @@ Route::get('json', 'MyController@getJson');
 
 // trả về auth
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

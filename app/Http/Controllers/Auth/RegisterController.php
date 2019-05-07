@@ -85,7 +85,7 @@ class RegisterController extends Controller
         ]);
         $userrole = Model::create([
             'id_user'=>$data['id_user'],
-            'id_role'=>'2',
+            'id_role'=>'3',
         ]);
         return $bien;        
     }

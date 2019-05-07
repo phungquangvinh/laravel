@@ -9,42 +9,31 @@
 
             <!-- Indicators -->
             <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-                <li data-target="#demo" data-slide-to="3"></li>
+                <?php $a = 0; ?>
+                @foreach($slide as $sl)
+                    <li data-target="#demo" data-slide-to="{{$a}}"
+                    @if($a == 0) class="active" @endif ></li>
+                    <?php $a++; ?>
+                @endforeach
             </ul>
           
             <!-- The slideshow -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="images/02_Homepage_01_17.png">
-                    <div class="carousel-caption">
-                        <h1>GARDEN SPRING</h1>
-                        <input type="submit" name="buy_01" value="BUY NOW">
+                <?php $a=0; ?>
+                @foreach($slide as $sl)
+                    <div
+                    @if($a == 0)
+                        class="carousel-item active"
+                    @else class="carousel-item"
+                    @endif>
+                    <?php $a++ ?>
+                        <img style="height: 500px" src="upload/slide/{{$sl->image}}" alt="{{$sl->NoiDung}}">
+                        <div class="carousel-caption">
+                            <h1>GARDEN SPRING</h1>
+                            <input type="submit" name="buy_01" value="BUY NOW">
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/02_Homepage_01_17.png">
-                    <div class="carousel-caption">
-                        <h1>GARDEN SPRING</h1>
-                        <input type="submit" name="buy_01" value="BUY NOW">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/02_Homepage_01_17.png">
-                    <div class="carousel-caption">
-                        <h1>GARDEN SPRING</h1>
-                        <input type="submit" name="buy_01" value="BUY NOW">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="images/02_Homepage_01_17.png">
-                    <div class="carousel-caption">
-                        <h1>GARDEN SPRING</h1>
-                        <input type="submit" name="buy_01" value="BUY NOW">
-                    </div>
-                </div>
+                @endforeach                
             </div>
           
             <!-- Left and right controls -->

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Vinh extends Migration
+class Category extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class Vinh extends Migration
      */
     public function up()
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('product');
-            $table->string('id_category');
-            $table->string('description',1000);
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->string('img_url');
-            $table->integer('quality');
-            $table->integer('price');
-            $table->float('sale_price');
             $table->boolean('active')->default(0);
-            $table->boolean('del_flg')->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ class Vinh extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('category');
     }
 }
