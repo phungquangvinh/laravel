@@ -13,8 +13,8 @@ class Role extends Migration
      */
     public function up()
     {
-        Schema::create('role', function (Blueprint $table) {
-            $table->increments('id_role');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('role');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class Role extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role');
+        Schema::dropIfExists('roles');
     }
 }

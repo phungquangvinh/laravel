@@ -4,47 +4,9 @@
 @stop
 @section('content')
 <div id="content">
-    <div class="slideshow col-01">
-        <div id="demo" class="carousel slide" data-ride="carousel">
+    
+    @include('layouts.slide')
 
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <?php $a = 0; ?>
-                @foreach($slide as $sl)
-                    <li data-target="#demo" data-slide-to="{{$a}}"
-                    @if($a == 0) class="active" @endif ></li>
-                    <?php $a++; ?>
-                @endforeach
-            </ul>
-          
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <?php $a=0; ?>
-                @foreach($slide as $sl)
-                    <div
-                    @if($a == 0)
-                        class="carousel-item active"
-                    @else class="carousel-item"
-                    @endif>
-                    <?php $a++ ?>
-                        <img style="height: 500px" src="upload/slide/{{$sl->image}}" alt="{{$sl->NoiDung}}">
-                        <div class="carousel-caption">
-                            <h1>GARDEN SPRING</h1>
-                            <input type="submit" name="buy_01" value="BUY NOW">
-                        </div>
-                    </div>
-                @endforeach                
-            </div>
-          
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-    </div>
     <div class="promotion">
         <div class="text_01">
             <div class="exceptional">
@@ -106,266 +68,35 @@
         </div>
         <div class="promotions">
             <div class="img_pro">
-                <img src="images/02_Homepage_01_30.jpg">
+                <a href="{{route('detail',$pro->id)}}">
+                    <img src="upload/product/{{$pro->img_url}}">
+                </a>
             </div>
             <div class="slideshow-container">
                 <div class="mySlides fade">
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></i></a>
-                                            <a href="#" class="quickview-link"></a>
+                    @foreach($product as $p)
+                        <div class="item">
+                            <div class="owl-item">
+                                <div class="item-product">
+                                    <div class="product-thumb">
+                                        <a class="product-thumb-link" href="#">
+                                            <img class="first-thumb" alt="" src="upload/product/{{$p->img_url}}">
+                                            <p style="color: #000;">{{$p->product}} <span><b>{{$p->price}} VND</b></span></p>
+                                            <img class="second-thumb" alt="" src="upload/product/{{$p->img_url}}">
+                                        </a>
+                                        <div class="product-info-cart">
+                                            <div class="product-extra-link">
+                                                <a href="{{route('product.edit',$p->id)}}" class="wishlist-link"></a>
+                                                <a href="{{route('product.edit',$p->id)}}" class="compare-link"></i></a>
+                                                <a href="{{route('product.edit',$p->id)}}" class="quickview-link"></a>
+                                            </div>
+                                            <a href="{{route('detail',$p->id)}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                         </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mySlides fade">
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mySlides fade">
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="owl-item">
-                            <div class="item-product">
-                                <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
-                                        <img class="first-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                        <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                        <img class="second-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                    </a>
-                                    <div class="product-info-cart">
-                                        <div class="product-extra-link">
-                                            <a href="#" class="wishlist-link"></a>
-                                            <a href="#" class="compare-link"></a>
-                                            <a href="#" class="quickview-link"></a>
-                                        </div>
-                                        <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -389,10 +120,7 @@
         <div class="arrows">
             <img src="images/02_Homepage_01_46.png">
             <ul>
-                <li><a href="#">HOME DECOR</a></li>
-                <li><a href="#">WORKSPACE</a></li>
-                <li><a href="#">OUT DOOR</a></li>
-                <li><a href="#">FOR GIFT</a></li>
+                <li><a href="#">CÂY CẢNH</a></li>
             </ul>
         </div>  
         <div class="promotions">
@@ -400,90 +128,29 @@
                 <img src="images/02_Homepage_01_49.jpg">
             </div>                  
             <div class="abc">
-                <div class="item">
-                    <div class="owl-item">
-                        <div class="item-product">
-                            <div class="product-thumb">
-                                <a class="product-thumb-link" href="#">
-                                    <img class="first-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                    <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                    <img class="second-thumb" alt="" src="images/02_Homepage_01_51.jpg">
-                                </a>
-                                <div class="product-info-cart">
-                                    <div class="product-extra-link">
-                                        <a href="#" class="wishlist-link"></a>
-                                        <a href="#" class="compare-link"></a>
-                                        <a href="#" class="quickview-link"></a>
+                @foreach($pr as $pr)
+                    <div class="item">
+                        <div class="owl-item">
+                            <div class="item-product">
+                                <div class="product-thumb">
+                                    <a class="product-thumb-link" href="#">
+                                        <img class="first-thumb" alt="" src="upload/product/{{$pr->img_url}}">
+                                        <p style="color: #000;">{{$pr->product}} <span><b>{{$pr->price}} VND</b></span></p>
+                                        <img class="second-thumb" alt="" src="upload/product/{{$pr->img_url}}">
+                                    </a>
+                                    <div class="product-info-cart">
+                                        <div class="product-extra-link">
+                                            <a href="{{route('product.edit',$pr->id)}}" class="wishlist-link"></a>
+                                            <a href="{{route('product.edit',$pr->id)}}" class="compare-link"></i></a>
+                                            <a href="{{route('product.edit',$pr->id)}}" class="quickview-link"></a>
+                                        </div>
+                                        <a href="{{route('detail',$pr->id)}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                     </div>
-                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="owl-item">
-                        <div class="item-product">
-                            <div class="product-thumb">
-                                <a class="product-thumb-link" href="#">
-                                    <img class="first-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                    <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                    <img class="second-thumb" alt="" src="images/02_Homepage_01_52.jpg">
-                                </a>
-                                <div class="product-info-cart">
-                                    <div class="product-extra-link">
-                                        <a href="#" class="wishlist-link"></a>
-                                        <a href="#" class="compare-link"></a>
-                                        <a href="#" class="quickview-link"></a>
-                                    </div>
-                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="owl-item">
-                        <div class="item-product">
-                            <div class="product-thumb">
-                                <a class="product-thumb-link" href="#">
-                                    <img class="first-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                    <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                    <img class="second-thumb" alt="" src="images/02_Homepage_01_55.jpg">
-                                </a>
-                                <div class="product-info-cart">
-                                    <div class="product-extra-link">
-                                        <a href="#" class="wishlist-link"></a>
-                                        <a href="#" class="compare-link"></a>
-                                        <a href="#" class="quickview-link"></a>
-                                    </div>
-                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="owl-item">
-                        <div class="item-product">
-                            <div class="product-thumb">
-                                <a class="product-thumb-link" href="#">
-                                    <img class="first-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                    <p style="color: #000;">Small tree house <span><b>$67.05</b></span></p>
-                                    <img class="second-thumb" alt="" src="images/02_Homepage_01_57.jpg">
-                                </a>
-                                <div class="product-info-cart">
-                                    <div class="product-extra-link">
-                                        <a href="#" class="wishlist-link"></a>
-                                        <a href="#" class="compare-link"></a>
-                                        <a href="#" class="quickview-link"></a>
-                                    </div>
-                                    <a href="#" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                @endforeach
             </div>                
         </div>          
     </div>

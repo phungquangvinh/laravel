@@ -54,7 +54,7 @@ class RegisterController extends Controller
             [
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
+                'password' => 'required|string|min:3|confirmed',
             ],
             [
                 'name.required' => 'Họ và tên là trường bắt buộc',
@@ -64,7 +64,7 @@ class RegisterController extends Controller
                 'email.max' => 'Email không quá 255 ký tự',
                 'email.unique' => 'Email đã tồn tại',
                 'password.required' => 'Mật khẩu là trường bắt buộc',
-                'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
+                'password.min' => 'Mật khẩu phải chứa ít nhất 3 ký tự',
                 'password.confirmed' => 'Xác nhận mật khẩu không đúng',
             ]
         );
@@ -81,11 +81,8 @@ class RegisterController extends Controller
         $bien = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role_id' => '3',
             'password' => Hash::make($data['password']),
-        ]);
-        $userrole = Model::create([
-            'id_user'=>$data['id_user'],
-            'id_role'=>'3',
         ]);
         return $bien;        
     }

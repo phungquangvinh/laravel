@@ -8,9 +8,9 @@ class comment extends Model
 {
     protected $table="comment";
 
-    public function Category()
+    public function Product()
     {
-    	return $this->belongsTo('App\Models\Category','idCategory','id');
+    	return $this->belongsTo('App\Models\product','id','id');
     }
 
     public function User()

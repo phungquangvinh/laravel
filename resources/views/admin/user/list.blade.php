@@ -17,10 +17,16 @@
                       <a href="{{ route('user.add') }}">Thêm user</a>
                     </div>
                     <!-- /.col-lg-12 -->
+                    @if(session('thongbao'))
+                        <div class="alert alert-success">
+                            {{ session('thongbao') }}
+                        </div> 
+                    @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
+                                <th>ID quyền</th>
                                 <th>Tên user</th>
                                 <th>Email</th>
                                 <th>Ngày tạo</th>
@@ -32,6 +38,7 @@
                         	@foreach($user as $u)
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $u->id }}</td>
+                                <td>{{ $u->role_id }}</td>
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->email }}</td>
                                 <td>{{ $u->created_at }}</td>

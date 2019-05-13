@@ -47,12 +47,12 @@ class UserController extends Controller
         $user = new User;
 
         $user->name = $request->Ten;
+        $user->role_id = $request->quyen;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
 
         $user->save();
-
-        $user->attachRole($request->quyen);
+        
         return redirect()->back()->with('thongbao', 'Thêm thành công');
     }
 
@@ -67,29 +67,28 @@ class UserController extends Controller
     {
     	$user = User::find($id);
     	$this->validate($request, [
-            'Ten' => 'required|min:3|unique:users,name',
-            'email' => 'required|email|unique:users,email',
+            'Ten' => 'required|min:3',
+            'email' => 'required|email',
             'password' => 'required|min:3|confirmed',
         ],
         [
             'Ten.required' => 'Nhập tên user đê',
             'Ten.min' => 'Tên tối thiểu dài 3 kí tự',
-            'Ten.unique' => 'Tên đã tồn tại!',
             'email.required' => 'Email là trường bắt buộc',
             'email.email' => 'Email không đúng định dạng',
-            'email.unique' => 'Email đã tồn tại!',
             'password.required' => 'Nhập password',
             'password.min' => 'Mật khẩu nên dài tối thiểu 3 kí tự',
             'password.confirmed' => 'Xác nhận mật khẩu không đúng',
         ]);
 
     	$user->name = $request->Ten;
+        $user->role_id = $request->quyen;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
 
-    	$user->save();
-        $user->attachRole($request->quyen);
-    	return redirect()->back()->with('thongbao', 'Sửa thông tin user thành công');
+        $user->save();
+        
+        return redirect()->back()->with('thongbao', 'Sửa thông tin user thành công');
     }
 
     public function getDelete($id)

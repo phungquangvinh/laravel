@@ -12,4 +12,9 @@ class product extends Model
     {
         return $this->belongsToMany('App\Model\category', 'pr_ca', 'id_product', 'id_category');
     }
+
+    public function Comment()
+    {
+    	return $this->hasMany('App\Models\Comment','idCategory','id');
+    }
 }

@@ -10,10 +10,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Quyền - Role
-                    <small></small>
+                    <small>{{ $role->role }}</small>
                 </h1>
             </div>
-            {{@var_dump($role) }} //đang sửa
             <!-- /.col-lg-12 -->
             <div class="col-lg-7" style="padding-bottom:120px">
                 @if(count($errors)>0)
@@ -34,7 +33,7 @@
 
                     <div class="form-group">
                         <label>Tên quyền</label>
-                        <input class="form-control" name="role" type="text" placeholder="Điền tên vào..." value="" />
+                        <input class="form-control" name="role" type="text" placeholder="Điền tên vào..." value="{{ $role->role }}" />
                     </div>
 
                     <button type="submit" class="btn btn-default">Thực hiện</button>

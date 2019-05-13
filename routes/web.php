@@ -43,17 +43,6 @@ Route::post('forgot', [ 'as' => 'forgot', 'uses' => 'Auth\ForgotPasswordControll
 Route::get('form', [ 'as' => 'form', 'uses' => 'MyController@getForm']);
 // Route::post('form', [ 'as' => 'form', 'uses' => 'MyController@postForm']);
 
-// upload file
-Route::get('uploadFile',function()
-{
- 	return view('collection');
-});
-
-Route::post('postFile',[
- 	'as'=>'postFile',
- 	'uses'=>'MyController@postFile'
-]);
-
 // tính toán
 Route::get('chi-tiet-san-pham/{id}', [ 'as' => 'detail', 'uses' => 'MyController@detail']);
 

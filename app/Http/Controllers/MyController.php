@@ -12,23 +12,29 @@ use Illuminate\Support\Facades\DB;
 use Session;
 
 use App\User;
+use App\Models\product;
 
 class MyController extends Controller
 {
     public function getIndex()
-    {
+    {        
         $slide = db::table('slide')->get();
-        return view('index', ['slide'=>$slide]);
+        $product = product::where('active', 1)->orderBy('id','DESC')->paginate(4);
+        $pro = product::find(1);
+        $pr = product::where('active', 1)->where('id_category', 3)->orderBy('id','DESC')->paginate(4);
+        return view('index', ['slide'=>$slide, 'product'=>$product, 'pro'=>$pro, 'pr'=>$pr]);
     }
     public function getShop()
     {
-        $abc = DB::select('select * from category');
-
-        return view('shop', ['abc' => $abc]);
+        $slide = db::table('slide')->get();
+        $abc = product::where('active', 1)->orderBy('id','DESC')->paginate(3);
+        return view('shop', ['abc' => $abc, 'slide'=>$slide]);
     }
     public function Collection()
     {
-        return view('collection');
+        $slide = db::table('slide')->get();
+        $product = product::where('active', 1)->where('id_category', 4)->orderBy('id','DESC')->paginate(4);
+        return view('collection', ['slide'=>$slide, 'product'=>$product]);
     }
     public function getForm()
     {
@@ -38,11 +44,11 @@ class MyController extends Controller
     {
         return view('math');
     }
-    public function detail()
+    public function detail($id)
     {
-        $abc = DB::select('select * from category');
+        $product = product::find($id);
 
-        return view('detail', ['abc' => $abc]);
+        return view('detail', ['product' => $product]);
     }
     public function admin()
     {

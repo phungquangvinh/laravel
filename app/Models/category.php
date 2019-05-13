@@ -8,13 +8,8 @@ class category extends Model
 {
 	protected $table="category";
 
-    public function Comment()
-    {
-    	return $this->hasMany('App\Models\Comment','idCategory','id');
-    }
-
     public function product()
     {
-        return $this->belongsToMany('App\Model\product', 'pr_ca', 'id_product', 'id_category');
+        return $this->belongsToMany('App\Models\product', 'id_product', 'id_category');
     }
 }

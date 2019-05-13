@@ -17,6 +17,11 @@
                       <a href="{{ route('role.add') }}">Thêm quyền</a>
                     </div>
                     <!-- /.col-lg-12 -->
+                    @if(session('thongbao'))
+                        <div class="alert alert-success">
+                            {{ session('thongbao') }}
+                        </div> 
+                    @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
@@ -33,11 +38,11 @@
                         	@foreach($role as $r)
                             <tr class="odd gradeX" align="center">
                             	<td>{{ $a++ }}</td>
-                                <td>{{ $r->id_role }}</td>
+                                <td>{{ $r->id }}</td>
                                 <td>{{ $r->role }}</td>
                                 <td>{{ $r->created_at }}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('role.edit',$r->id_role)}}"> Edit</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('role.delete',$r->id_role)}}">Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('role.edit',$r->id)}}"> Edit</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('role.delete',$r->id)}}">Delete</a></td>
                             </tr>
                             @endforeach
                         </tbody>

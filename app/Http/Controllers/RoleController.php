@@ -10,7 +10,7 @@ class RoleController extends Controller
 {
     public function list()
     {
-    	$role = db::table('role')->get();
+    	$role = db::table('roles')->get();
     	return view('admin.role.list',['role'=>$role]);
     }
 
@@ -22,7 +22,7 @@ class RoleController extends Controller
     public function postAdd(Request $request)
     {
         $this->validate($request, [
-            'role' => 'required|unique:role',
+            'role' => 'required|unique:roles',
         ],
         [
             'role.required' => 'Nhập tên quyền!',
@@ -38,25 +38,23 @@ class RoleController extends Controller
 
     public function getEdit($id)
     {
-    	$role = db::table('role')->where('id_role', $id)->get();
-    	return view('admin.role.edit', ['role'=>$role]); //đang sửa
+    	$role = Role::find($id);
+    	return view('admin.role.edit', ['role'=>$role]);
     }
 
     public function postEdit(Request $request, $id)
     {
-        $lophoc = Lophoc::find($id);
+        $role = Role::find($id);
         $this->validate($request, [
-            'tenlop' => 'required',
+            'role' => 'required',
         ],
         [
-            'tenlop.required' => 'Nhập tên lớp học!',
+            'role.required' => 'Nhập tên quyền!',
         ]);
 
-        $lophoc->tenlop = $request->tenlop;
-        $lophoc->id_khoahoc = $request->id_khoahoc;
-        $lophoc->id_gvcn = $request->id_gvcn;
+        $role->role = $request->role;
 
-        $lophoc->save();
+        $role->save();
         return redirect()->back()->with('thongbao', 'Sửa thành công');
     }
 
