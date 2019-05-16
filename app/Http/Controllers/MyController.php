@@ -24,32 +24,35 @@ class MyController extends Controller
         $pr = product::where('active', 1)->where('id_category', 3)->orderBy('id','DESC')->paginate(4);
         return view('index', ['slide'=>$slide, 'product'=>$product, 'pro'=>$pro, 'pr'=>$pr]);
     }
+
     public function getShop()
     {
         $slide = db::table('slide')->get();
         $abc = product::where('active', 1)->orderBy('id','DESC')->paginate(3);
         return view('shop', ['abc' => $abc, 'slide'=>$slide]);
     }
+
     public function Collection()
     {
         $slide = db::table('slide')->get();
         $product = product::where('active', 1)->where('id_category', 4)->orderBy('id','DESC')->paginate(4);
         return view('collection', ['slide'=>$slide, 'product'=>$product]);
     }
-    public function getForm()
+
+    public function search(Request $request)
     {
-        return view('form');
+        $key = $request->get('key');
+        $product = Product::where('product','like','%'.$key.'%')->orWhere('description','like','%'.$key.'%')->orWhere('price','like','%'.$key.'%')->paginate(10);
+        return view('search',['product'=>$product, 'key'=>$key]);
     }
-    public function getMath()
-    {
-        return view('math');
-    }
+
     public function detail($id)
     {
         $product = product::find($id);
 
         return view('detail', ['product' => $product]);
     }
+
     public function admin()
     {
         return view('admin.index');

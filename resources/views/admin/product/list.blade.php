@@ -46,7 +46,7 @@
                                 <td>{{ $p->id }}</td>
                                 <td>{{ $p->product }}</td>
                                 <td>{{ $p->id_category }}</td>
-                                <td>{{ $p->description }}</td>
+                                <td>{!! $p->description !!}</td>
                                 <td><img src="upload/product/{{$p->img_url}}" style="width: 200px"></td>
                                 <td>{{ $p->quality }}</td>
                                 <td>{{ $p->price }}</td>

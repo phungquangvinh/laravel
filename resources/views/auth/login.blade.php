@@ -1,9 +1,17 @@
 @extends('layouts.app')
+@section('title')
+    Login
+@stop
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center">        
         <div class="col-md-8">
+            @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{ session('thongbao') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

@@ -10,7 +10,7 @@
 <br><br>
 <div class="detail" style="width: 400px; margin-left: 40px">
 	<b><h3>Tên sản phẩm: {{ $product->product }}</h3></b>
-	<p>Mô tả: {{ $product->description }}</p>
+	<p>Mô tả: {!! $product->description !!}</p>
 	<p>Đơn giá: {{ $product->price }} VND</p>
 	<p>Tình trạng: 
 		@if($product->active == 1)
@@ -22,6 +22,8 @@
 	<p>
 		@if($product->sale_price != 0)
             Khuyến mãi: {{ $product->sale_price*100 }}%
+        @elseif($product->sale_price == 1)
+        	{{"Hàng free. Nhanh tay đừng bỏ lỡ!"}}
         @else
             {{"Không có khuyến mãi"}}
         @endif		

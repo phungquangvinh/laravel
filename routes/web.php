@@ -27,27 +27,17 @@ Route::get('collection', [
 	'uses' => 'MyController@Collection',
 ]);
  
-Route::get('register', 'Auth\RegisterController@getRegister');
-Route::post('register', 'Auth\RegisterController@postRegister');
- 
-Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
-Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
- 
 Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLogout']);
 
 //Quên mật khẩu
 Route::get('forgot', [ 'as' => 'forgot', 'uses' => 'Auth\ForgotPasswordController@getForgotPassword']);
 Route::post('forgot', [ 'as' => 'forgot', 'uses' => 'Auth\ForgotPasswordController@postForgotPassword']);
 
-// form
-Route::get('form', [ 'as' => 'form', 'uses' => 'MyController@getForm']);
-// Route::post('form', [ 'as' => 'form', 'uses' => 'MyController@postForm']);
-
 // tính toán
 Route::get('chi-tiet-san-pham/{id}', [ 'as' => 'detail', 'uses' => 'MyController@detail']);
 
 //admin
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 	Route::get('/','MyController@admin')->name('/');
 
 	Route::group(['prefix'=>'user'], function(){
@@ -175,6 +165,13 @@ Route::group(['prefix'=>'admin'], function(){
 		]);
 	});
 });
+
+//search
+Route::get('search', 'MyController@search');
+
+//người dùng, mamber
+Route::get('user', 'HomeController@getUser')->name('user');
+Route::post('user', 'HomeController@postUser')->name('user');
 
 Route::get('test', [ 'as' => 'test', 'uses' => 'MyController@test']);
 Route::get('json', 'MyController@getJson');

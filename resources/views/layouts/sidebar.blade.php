@@ -1,11 +1,17 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <ul class="menu">
-        <li><a href="#">MY ACCOUNT</a></li>
+        <li><a href="{{route("user")}}">MY ACCOUNT</a></li>
         <li><a href="#">MY WISHLIST</a></li>
         <li><a href="#">MY CART</a></li>
         <li><a href="#">CHECKOUT</a></li>
-        <li><a href="{{route("login")}}">LOG IN</a></li>
+        <li>
+            @if (Auth::check())
+                <a href="{{ url('/logout') }}">LOG OUT</a>
+            @else
+                <a href="{{route("login")}}">LOG IN</a>
+            @endif
+        </li>
     </ul>
     <p style="padding-left: 20px">YOUR LANGUAGES</p>
     <ul class="lang">
@@ -28,8 +34,9 @@
     <p style="padding: 30px; padding-bottom: 0">SEARCH</p>
     <div class="topnav">
       <div class="search-container">
-        <form action="">
-          <input type="text" placeholder="Search..." name="search">
+        <form action="search" method="get" class="navbar-form navbar-left" role="search">
+            @csrf
+          <input type="text" placeholder="Search..." name="key">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>

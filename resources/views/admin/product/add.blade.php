@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label>Khuyến mại (nhập số %)</label>
-                        <input class="form-control" name="sale_price" type="number" value="" />
+                        <input class="form-control" name="sale_price" type="number" value="" max="100" />
                     </div>
 
                     <div class="form-group">

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -22,38 +22,53 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    //use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-    public function getLogin() {
-        return view('auth/login');
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
     }
-    public function postLogin(loginRequest $request) {
-        
+
+    protected function login(Request $request)
+    {
         $email = $request->input('email');
         $password = $request->input('password');
- 
+
         if( Auth::attempt(['email' => $email, 'password' =>$password])) {
-            // Kiểm tra đúng email và mật khẩu sẽ chuyển trang
-            return redirect('/');
+            if(Auth::check()){
+                $user = Auth::user();
+                if (($user->role_id == 1) || ($user->role_id == 2)) {
+                    return redirect('admin');
+                }
+                else return redirect('/');
+            }
+            else return redirect('login');
         } 
         else {                
-            return redirect('login');
+            return redirect('login')->with('thongbao','Đăng nhập ko thành công!');
         }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('login');
     }
 }

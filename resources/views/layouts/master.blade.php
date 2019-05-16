@@ -25,11 +25,11 @@
 			@if (Auth::check())
 				<div>
 					'{{Auth::user()->name}}' đang đăng nhập với quyền 
-					@if( Auth::user()->id_role == 1)
+					@if( Auth::user()->role_id == 1)
 						{{ "SuperAdmin" }}
-					@elseif( Auth::user()->id_role == 2)
+					@elseif( Auth::user()->role_id == 2)
 						{{ "Admin" }}
-					@elseif( Auth::user()->id_role == 3)
+					@elseif( Auth::user()->role_id == 3)
 						{{ "Member" }}
 					@endif
 				</div>
@@ -41,11 +41,13 @@
 
 		@include('layouts.footer')
 
-		@yield('script')
+		@yield('script')	
+		<script src="{{asset('js/jquery.js')}}"></script>
+		<script src="{{asset('js/my.js')}}"></script>
+		<script src="{{asset('js/bootstrap.min.js')}}"></script>	    
 	</div>
 </body>
 <script type="text/javascript" src="{{asset('js/slide.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
 </html>

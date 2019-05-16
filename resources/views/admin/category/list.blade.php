@@ -42,7 +42,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $c->id }}</td>
                                 <td>{{ $c->name }}</td>
-                                <td>{{ $c->description }}</td>
+                                <td>{!! $c->description !!}</td>
                                 <td><img src="upload/category/{{$c->img_url}}" style="width: 200px"></td>
                                 <td>
                                     @if($c->active == 1)

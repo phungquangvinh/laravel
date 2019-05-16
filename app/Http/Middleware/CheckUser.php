@@ -20,7 +20,7 @@ class CheckUser
         //return $next($request);
         // Auth::user()->hasRole('AdminTractor');
         if(Auth::check()){
-            if(Auth::user()->hasRole('SuperAdmin')){
+            if((Auth::user()->role_id == 1) || (Auth::user()->role_id == 2)){
                 return $next($request);
             }else{
                 return redirect('home');

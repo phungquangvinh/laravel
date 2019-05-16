@@ -18,7 +18,7 @@ class AdminLoginMiddleware
     {
         if(Auth::check()){
             $user = Auth::user();
-            if (($user->quyen == 1) || ($user->quyen == 2)) {
+            if (($user->role_id == 1) || ($user->role_id == 2)) {
                 return $next($request);
             } else return redirect('login');
         }

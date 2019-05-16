@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function list()
     {
-    	$user = User::all();
+    	$user = User::all();    
     	return view('admin.user.list', ['user'=>$user]);
     }
 
