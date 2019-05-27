@@ -72,7 +72,7 @@ class SlideController extends Controller
     	$slide = Slide::find($id);
     	$this->validate($request, [
     		'name' => 'required|min:5|max:50',
-    		'noidung' => 'required|min:50',
+    		'noidung' => 'required',
     		'link' => 'required',   		
     	],
     	[
@@ -80,7 +80,6 @@ class SlideController extends Controller
     		'name.min' => 'Tên quá ngắn, nghĩ tên nào dài ra đê',
     		'name.max' => 'Viết dài quá, xóa bớt đê',
     		'noidung.required' => 'Viết nội dung vào',
-    		'noidung.min' => 'Nội dung phải lớn hơn 50 kí tự',
     		'link.required' => 'Chưa nhập link kìa',
     	]);
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Role;
 
@@ -10,8 +11,9 @@ class RoleController extends Controller
 {
     public function list()
     {
+        $auth = Auth::user();
     	$role = db::table('roles')->get();
-    	return view('admin.role.list',['role'=>$role]);
+    	return view('admin.role.list',['role'=>$role, 'auth' => $auth]);
     }
 
     public function add()

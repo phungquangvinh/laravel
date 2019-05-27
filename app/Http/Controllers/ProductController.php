@@ -43,6 +43,7 @@ class ProductController extends Controller
 
         $product = new Product;
         $product->product = $request->product;
+        $product->TenKhongDau = changeTitle($request->product);
         $product->id_category = $request->category;
         $product->description = $request->description;
         $product->quality = $request->quality;
@@ -98,6 +99,7 @@ class ProductController extends Controller
         ]);
         
         $product->product = $request->product;
+        $product->TenKhongDau = changeTitle($request->product);
         $product->id_category = $request->category;
         $product->description = $request->description;
         $product->quality = $request->quality;

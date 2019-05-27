@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Session;
 
 use App\User;
+use App\Models\category;
 use App\Models\product;
 
 class MyController extends Controller
@@ -20,9 +21,11 @@ class MyController extends Controller
     {        
         $slide = db::table('slide')->get();
         $product = product::where('active', 1)->orderBy('id','DESC')->paginate(4);
+        $category = db::table('category')->get();
         $pro = product::find(1);
+        $produce = product::where('active', 1)->orderBy('id','DESC')->paginate(3);
         $pr = product::where('active', 1)->where('id_category', 3)->orderBy('id','DESC')->paginate(4);
-        return view('index', ['slide'=>$slide, 'product'=>$product, 'pro'=>$pro, 'pr'=>$pr]);
+        return view('index', ['slide'=>$slide, 'product'=>$product, 'produce'=>$produce, 'category'=>$category, 'pro'=>$pro, 'pr'=>$pr]);
     }
 
     public function getShop()
@@ -32,30 +35,34 @@ class MyController extends Controller
         return view('shop', ['abc' => $abc, 'slide'=>$slide]);
     }
 
-    public function Collection()
+    public function category($id)
     {
         $slide = db::table('slide')->get();
-        $product = product::where('active', 1)->where('id_category', 4)->orderBy('id','DESC')->paginate(4);
-        return view('collection', ['slide'=>$slide, 'product'=>$product]);
+        $category = db::table('category')->get();
+        $db_cate = category::find($id);
+        $product = product::where('active', 1)->where('id_category', $id)->orderBy('id','DESC')->paginate(4);
+        return view('category', ['slide'=>$slide, 'category'=>$category, 'db_cate'=>$db_cate, 'product'=>$product]);
     }
 
     public function search(Request $request)
     {
+        $category = db::table('category')->get();
         $key = $request->get('key');
         $product = Product::where('product','like','%'.$key.'%')->orWhere('description','like','%'.$key.'%')->orWhere('price','like','%'.$key.'%')->paginate(10);
-        return view('search',['product'=>$product, 'key'=>$key]);
+        return view('search',['product'=>$product, 'key'=>$key, 'category'=>$category]);
     }
 
     public function detail($id)
     {
         $product = product::find($id);
-
+        
         return view('detail', ['product' => $product]);
     }
 
     public function admin()
     {
-        return view('admin.index');
+        $auth = Auth::user();
+        return view('admin.index', ['auth' => $auth]);
     }
 
     public function test()

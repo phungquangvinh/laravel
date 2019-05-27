@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 
@@ -10,13 +11,15 @@ class UserController extends Controller
 {
     public function admin()
     {
-        return view('admin.index');
+        $auth = Auth::user();
+        return view('admin.index', ['auth'=>$auth]);
     }
 
     public function list()
     {
+        $auth = Auth::user();
     	$user = User::all();    
-    	return view('admin.user.list', ['user'=>$user]);
+    	return view('admin.user.list', ['user'=>$user, 'auth'=>$auth]);
     }
 
     public function add()

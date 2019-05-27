@@ -22,10 +22,6 @@
                     @endif>
                     <?php $a++ ?>
                         <img style="height: 500px" src="upload/slide/{{$sl->image}}" alt="{{$sl->NoiDung}}">
-                        <div class="carousel-caption">
-                            <h1>GARDEN SPRING</h1>
-                            <input type="submit" name="buy_01" value="BUY NOW">
-                        </div>
                     </div>
                 @endforeach                
             </div>

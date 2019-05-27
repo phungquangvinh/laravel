@@ -10,54 +10,33 @@
     <div class="promotion">
         <div class="text_01">
             <div class="exceptional">
-                <b><p>EXCEPTIONAL</p></b>
-                <h1>Services We Offer</h1>
+                <b><p>TUYỆT VỜI</p></b>
+                <h1>Các dịch vụ của chúng tôi</h1>
             </div>
             <div class="text_01_01">
-                <p>BETTER is a simply beautiful and delightful PSD template speacially designed for gardening and home decoration online shop. You will immediately fall in love with those cheerful and easily customizable layouts of BETTER. A perfect choice for your little adorable shop. Go for it!   
-                We provide exceptional Garden services to a wide range of commercial and residential properties for over 10 years...</p>
+                <p>BETTER là một mẫu PSD đơn giản và đẹp mắt được thiết kế riêng cho cửa hàng trực tuyến Thời trang và mỹ phẩm BETTER. Bạn sẽ ngay lập tức yêu những bố cục vui vẻ và dễ dàng tùy chỉnh của BETTER. Một sự lựa chọn hoàn hảo cho cửa hàng nhỏ đáng yêu của bạn!
+                Chúng tôi cung cấp dịch vụ Shop đặc biệt cho nhiều loại tài sản thương mại trong hơn 10 năm...</p>
             </div>
         </div>
         <div class="image image_01">
             <div class="container">
                 <div class="row1">
-                    <div class="column active">
-                        <p class="demo cursor" onclick="currentSlide(1)">Gift from Flower</p>
+                @foreach($category as $c)
+                    <div @if($c->id == 1) class="column active" @else class="column" @endif>
+                        <p class="demo cursor" onclick="currentSlide({{$c->id}})">{{$c->name}}</p>
                     </div>
-                    <div class="column">
-                        <p class="demo cursor" onclick="currentSlide(2)">Planting of Garden</p>
-                    </div>
-                    <div class="column">
-                        <p class="demo cursor" onclick="currentSlide(3)">Indoor Decorations</p>
-                    </div>
+                @endforeach
                 </div>
 
-                <div class="mySlide fade">
-                    <img src="images/the-hayden-full-1460745825-bloomthat_thehayden@2x.png" style="max-width:300px;height: 400px">
-                </div>
-
-                <div class="mySlide fade">
-                    <img src="images/Fotolia_92360029_Subscription_Monthly_XXL.jpg" style="max-width: 400px;height: 400px">
-                </div>
-
-                <div class="mySlide fade">
-                    <img src="images/02_Homepage_01_55.jpg" style="width: 350px;height: 400px">
-                </div>                   
+                @foreach($category as $c)
+                    <div class="mySlide fade">
+                        <img src="upload/category/{{$c->img_url}}" style="max-width: 400px; height: 300px">
+                    </div>
+                @endforeach                   
             </div>
         </div>
     </div>
-    <div class="block_static">
-        <div class="text_02">
-            <b><h2>FLOWER CARE WORKERS!</h2></b>
-            <p>We have workers skilled flower care, with many years of experience in the profession, the meticulously cared create the best products for customers</p>
-            <div class="bs_submit">
-                <input type="submit" name="contact" value="CONTACT NOW" style="background-color: #000; color: #fff">
-            </div>
-        </div>
-        <div class="image image_02">
-            <img src="images/Fotolia_92360029_Subscription_Monthly_XXL.jpg">
-        </div>
-    </div>
+    
     <div class="new_product">
         <div class="arrows">
             <img src="images/02_Homepage_01_21.png">
@@ -68,7 +47,7 @@
         </div>
         <div class="promotions">
             <div class="img_pro">
-                <a href="{{route('detail',$pro->id)}}">
+                <a href="{{route('detail',['id' => $pro->id, 'TenKhongDau' => $pro->TenKhongDau])}}">
                     <img src="upload/product/{{$pro->img_url}}">
                 </a>
             </div>
@@ -79,9 +58,18 @@
                             <div class="owl-item">
                                 <div class="item-product">
                                     <div class="product-thumb">
-                                        <a class="product-thumb-link" href="#">
+                                        <a class="product-thumb-link" href="{{route('detail',['id' => $p->id, 'TenKhongDau' => $p->TenKhongDau])}}">
                                             <img class="first-thumb" alt="" src="upload/product/{{$p->img_url}}">
-                                            <p style="color: #000;">{{$p->product}} <span><b>{{$p->price}} VND</b></span></p>
+                                            <p style="color: #000;">{{$p->product}}</p>
+                                            <span>
+                                                @if($p->sale_price == 0)
+                                                    <b>{{$p->price}} VND</b>
+                                                @elseif($p->sale_price != 1)
+                                                    <del>{{ $p->price }} VND</del> <b style="color: red">{{ $p->price - ($p->price*$p->sale_price) }} VND</b>
+                                                @else
+                                                    <del>{{ $p->price }} VND</del> <b style="color: red">Free!</b>
+                                                @endif 
+                                            </span>
                                             <img class="second-thumb" alt="" src="upload/product/{{$p->img_url}}">
                                         </a>
                                         <div class="product-info-cart">
@@ -90,7 +78,7 @@
                                                 <a href="{{route('product.edit',$p->id)}}" class="compare-link"></i></a>
                                                 <a href="{{route('product.edit',$p->id)}}" class="quickview-link"></a>
                                             </div>
-                                            <a href="{{route('detail',$p->id)}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
+                                            <a href="{{route('user.cart')}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,13 +93,13 @@
         <!-- Button to Open the Modal -->
         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">
             <img src="images/02_Homepage_01_43.png">
-            <h2 style="color: #fff">LASTEST VIDEO CLIP</h2>
+            <h2 style="color: #fff">XEM VIDEO MỚI NHẤT</h2>
         </a>
         <!-- The Modal -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <iframe width="729" height="410" src="https://www.youtube.com/embed/MjUqa_4ebNc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="727" height="409" src="https://www.youtube.com/embed/SuzG7u65LeA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -120,7 +108,7 @@
         <div class="arrows">
             <img src="images/02_Homepage_01_46.png">
             <ul>
-                <li><a href="#">CÂY CẢNH</a></li>
+                <li><a href="#">MỸ PHẨM</a></li>
             </ul>
         </div>  
         <div class="promotions">
@@ -133,9 +121,18 @@
                         <div class="owl-item">
                             <div class="item-product">
                                 <div class="product-thumb">
-                                    <a class="product-thumb-link" href="#">
+                                    <a class="product-thumb-link" href="{{route('detail',['id' => $pr->id, 'TenKhongDau' => $pr->TenKhongDau])}}">
                                         <img class="first-thumb" alt="" src="upload/product/{{$pr->img_url}}">
-                                        <p style="color: #000;">{{$pr->product}} <span><b>{{$pr->price}} VND</b></span></p>
+                                        <p style="color: #000;">{{$pr->product}}</p>
+                                        <span>
+                                            @if($pr->sale_price == 0)
+                                                <b>{{$pr->price}} VND</b>
+                                            @elseif($pr->sale_price != 1)
+                                                <del>{{ $pr->price }} VND</del> <b style="color: red">{{ $pr->price - ($pr->price*$pr->sale_price) }} VND</b>
+                                            @else
+                                                <del>{{ $pr->price }} VND</del> <b style="color: red">Free!</b>
+                                            @endif 
+                                        </span>
                                         <img class="second-thumb" alt="" src="upload/product/{{$pr->img_url}}">
                                     </a>
                                     <div class="product-info-cart">
@@ -144,7 +141,7 @@
                                             <a href="{{route('product.edit',$pr->id)}}" class="compare-link"></i></a>
                                             <a href="{{route('product.edit',$pr->id)}}" class="quickview-link"></a>
                                         </div>
-                                        <a href="{{route('detail',$pr->id)}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
+                                        <a href="{{route('user.cart')}}" class="addcart-link"><i class="fa fa-shopping-basket"></i> ADD TO CART</a>
                                     </div>
                                 </div>
                             </div>
@@ -162,33 +159,17 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="promotions">
+                    @foreach($produce as $p)
                     <div class="news">
                         <div class="image_03">
-                            <img src="images/team4-m-min.png">      
+                            <img src="upload/product/{{$p->img_url}}">      
                         </div>
                         <div class="text_03">
-                            <h3><b>PLANTING & REMOVAL</b></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
+                            <h3><b>{{$p->product}}</b></h3>
+                            <p>{!! $p->description !!}</p>
                         </div>
                     </div>
-                    <div class="news">
-                        <div class="image_03">
-                            <img src="images/photo-1455819413567-ef04b7e1fe3d.png">
-                        </div>
-                        <div class="text_03">
-                            <h3><b>BETTER DESIGN</b></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
-                        </div>
-                    </div>
-                    <div class="news">
-                        <div class="image_03">
-                            <img src="images/team_06-848x480.png">
-                        </div>
-                        <div class="text_03">
-                            <h3><b>GARDEN CARE</b></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="carousel-item">
@@ -224,33 +205,17 @@
             </div>
             <div class="carousel-item">
                 <div class="promotions">
+                    @foreach($produce as $p)
                     <div class="news">
                         <div class="image_03">
-                            <img src="images/team_06-848x480.png">
+                            <img src="upload/product/{{$p->img_url}}">      
                         </div>
                         <div class="text_03">
-                            <h3><b>GARDEN CARE</b></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
+                            <h3><b>{{$p->product}}</b></h3>
+                            <p>{!! $p->description !!}</p>
                         </div>
                     </div>
-                    <div class="news">
-                        <div class="image_03">
-                            <img src="images/photo-1455819413567-ef04b7e1fe3d.png">
-                        </div>
-                        <div class="text_03">
-                            <h3><b>BETTER DESIGN</b></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
-                        </div>
-                    </div>
-                    <div class="news">
-                        <div class="image_03">
-                            <img src="images/team4-m-min.png">      
-                        </div>
-                        <div class="text_03">
-                            <h3><b>PLANTING & REMOVAL</b></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc lacinia.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
           </div>

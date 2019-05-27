@@ -68,7 +68,7 @@
 
                     <div class="form-group">
                         <label>Khuyến mại (nhập số %)</label>
-                        <input class="form-control" name="sale_price" type="number" value="{{ $product->sale_price*100 }}" />
+                        <input class="form-control" name="sale_price" type="number" value="{{ $product->sale_price*100 }}" max="100" />
                     </div>
 
                     <div class="form-group">

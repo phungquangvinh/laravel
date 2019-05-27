@@ -34,6 +34,7 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = $request->name_category;
+        $category->TenKhongDau = changeTitle($request->name_category);
         $category->description = $request->mota;
         $category->active = $request->active_category;
 
@@ -76,6 +77,7 @@ class CategoryController extends Controller
         ]);
         
         $category->name = $request->name_category;
+        $category->TenKhongDau = changeTitle($request->name_category);
         $category->description = $request->mota;
         $category->active = $request->active_category;
 

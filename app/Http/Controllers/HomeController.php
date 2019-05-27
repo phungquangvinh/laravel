@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use DB;
 
 class HomeController extends Controller
 {
@@ -31,7 +31,8 @@ class HomeController extends Controller
     public function getUser()
     {
         $user = Auth::user();
-        return view('user.index',['user'=>$user]);
+        $category = db::table('category')->get();
+        return view('user.index',['user'=>$user, 'category' => $category]);
     }
 
     public function postUser(Request $request)
@@ -47,20 +48,18 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $user->name = $request->name;
-
-        if($request->checkpassword == "on"){
-            $this->validate($request, [
-                'password' => 'required|min:3',
-                'passwordAgain' => 'required|same:password'
-            ],
-            [
-                'password.required' => 'Không nhập mật khẩu à?',
-                'password.min' => 'Mật khẩu phải từ 3 kí tự trở lên',
-                'passwordAgain.required' => 'Chưa nhập lại mật khẩu',
-                'passwordAgain.same' => 'Mật khẩu nhập lại không đúng'
-            ]);
-            $user->password = bcrypt($request->password);
-        }
+        
+        $this->validate($request, [
+            'password' => 'required|min:3',
+            'passwordAgain' => 'required|same:password'
+        ],
+        [
+            'password.required' => 'Không nhập mật khẩu à?',
+            'password.min' => 'Mật khẩu phải từ 3 kí tự trở lên',
+            'passwordAgain.required' => 'Chưa nhập lại mật khẩu',
+            'passwordAgain.same' => 'Mật khẩu nhập lại không đúng'
+        ]);
+        $user->password = bcrypt($request->password);        
 
         $user->save();
         return redirect()->back()->with('thongbao', 'Sửa thông tin user thành công');

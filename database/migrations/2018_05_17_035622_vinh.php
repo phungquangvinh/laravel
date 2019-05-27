@@ -16,6 +16,7 @@ class Vinh extends Migration
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product');
+            $table->string('TenKhongDau');
             $table->string('id_category');
             $table->string('description',1000);
             $table->string('img_url');

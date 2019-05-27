@@ -13,64 +13,64 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{{ route('admin') }}"><i class="fa fa-dashboard fa-fw"></i> Trang chủ admin</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('category.list') }}">List</a>
+                                    <a href="{{ route('category.list') }}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('category.add') }}">Add</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('product.list') }}">List</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('product.add') }}">Add</a>
+                                    <a href="{{ route('category.add') }}">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Slide<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('slide.list') }}">List</a>
+                                    <a href="{{ route('product.list') }}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('slide.add') }}">Add</a>
+                                    <a href="{{ route('product.add') }}">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Trình chiếu<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('user.list') }}">List</a>
+                                    <a href="{{ route('slide.list') }}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('user.add') }}">Add</a>
+                                    <a href="{{ route('slide.add') }}">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Role<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('role.list') }}">List</a>
+                                    <a href="{{ route('user.list') }}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('role.add') }}">Add</a>
+                                    <a href="{{ route('user.add') }}">Thêm</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Cấp quyền<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('role.list') }}">Danh sách</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('role.add') }}">Thêm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

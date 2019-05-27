@@ -22,10 +22,7 @@ Route::get('shop', [
 	'uses' => 'MyController@getShop',
 ]);
 
-Route::get('collection', [
-	'as' => 'collection',
-	'uses' => 'MyController@Collection',
-]);
+Route::get('category/{id}/{TenKhongDau}.html', [ 'as' => 'category', 'uses' => 'MyController@category']);
  
 Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLogout']);
 
@@ -33,12 +30,12 @@ Route::get('logout', [ 'as' => 'logout', 'uses' => 'Auth\LogoutController@getLog
 Route::get('forgot', [ 'as' => 'forgot', 'uses' => 'Auth\ForgotPasswordController@getForgotPassword']);
 Route::post('forgot', [ 'as' => 'forgot', 'uses' => 'Auth\ForgotPasswordController@postForgotPassword']);
 
-// tính toán
-Route::get('chi-tiet-san-pham/{id}', [ 'as' => 'detail', 'uses' => 'MyController@detail']);
+// chi tiết sản phẩm
+Route::get('chi-tiet-san-pham/{id}/{TenKhongDau}.html', [ 'as' => 'detail', 'uses' => 'MyController@detail']);
 
 //admin
-Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
-	Route::get('/','MyController@admin')->name('/');
+Route::group(['prefix'=>'admin', 'middleware' => 'adminLogin'], function(){
+	Route::get('/', [ 'as' => 'admin', 'uses' => 'MyController@admin']);
 
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('list', [
@@ -169,9 +166,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'adminLogin'], function(){
 //search
 Route::get('search', 'MyController@search');
 
-//người dùng, mamber
-Route::get('user', 'HomeController@getUser')->name('user');
-Route::post('user', 'HomeController@postUser')->name('user');
+//người dùng, member
+Route::group(['prefix'=>'user'], function(){
+	Route::get('/', [ 'as' => 'user', 'uses' => 'HomeController@getUser']);
+	Route::post('/', [ 'as' => 'user', 'uses' => 'HomeController@postUser']);
+	Route::get('cart', [ 'as' => 'user.cart', 'uses' => 'CartController@cart']);
+});
 
 Route::get('test', [ 'as' => 'test', 'uses' => 'MyController@test']);
 Route::get('json', 'MyController@getJson');

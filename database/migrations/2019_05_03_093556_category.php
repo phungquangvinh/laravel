@@ -16,6 +16,7 @@ class Category extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('TenKhongDau');
             $table->string('description')->nullable();
             $table->string('img_url');
             $table->boolean('active')->default(0);

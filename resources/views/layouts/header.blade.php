@@ -89,67 +89,19 @@
 				</div>
 			</li>
 			<li class="dropdown">
-			  	<span class="dropbtn">COLLECTION</span>
+			  	<span class="dropbtn">CATEGORY</span>
 			  	<div class="dropdown-content fade">
 			  		<div class="all">
 			  			<div class="shop_menu">
 			  				<div class="shop_01">
+			  					@foreach($category as $c)
 			  					<div class="bag">
-									<h3>STYLIST BAG</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Clutch Handbags</a></li>
-										<li><a href="{{route("collection")}}">> Diaper Bags</a></li>
-										<li><a href="{{route("collection")}}">> Bags</a></li>
-										<li><a href="{{route("collection")}}">> Hobo Handbags</a></li>
+									<h3>{{$c->name}}</h3><hr>
+									<ul>										
+										<li><a href="{{route('category',['id' => $c->id, 'TenKhongDau' => $c->TenKhongDau])}}">> Chi tiết</a></li>							
 									</ul>
 								</div>
-								<div class="bag">
-									<h3>MATERIAL BAG</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Beaded Handbags</a></li>
-										<li><a href="{{route("collection")}}">> Fabric Handbags</a></li>
-										<li><a href="{{route("collection")}}">> Handbags</a></li>
-										<li><a href="{{route("collection")}}">> Leather Handbags</a></li>
-									</ul>
-								</div>
-								<div class="bag">
-									<h3>SHOE</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Flat Shoes</a></li>
-										<li><a href="{{route("collection")}}">> Flat Sandals</a></li>
-										<li><a href="{{route("collection")}}">> Boots</a></li>
-										<li><a href="{{route("collection")}}">> Heels</a></li>
-									</ul>
-								</div>
-			  				</div>
-			  				<div class="shop_02">
-			  					<div class="bag">
-									<h3>JWELLERY</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Bracelets</a></li>
-										<li><a href="{{route("collection")}}">> Necklaces & Pendants</a></li>
-										<li><a href="{{route("collection")}}">> Pendants</a></li>
-										<li><a href="{{route("collection")}}">> Pins & Brooches</a></li>
-									</ul>
-								</div>
-								<div class="bag">
-									<h3>DRESSES</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Casual Dresses</a></li>
-										<li><a href="{{route("collection")}}">> Evening</a></li>
-										<li><a href="{{route("collection")}}">> Designer</a></li>
-										<li><a href="{{route("collection")}}">> Party</a></li>
-									</ul>
-								</div>
-								<div class="bag">
-									<h3>SWIMWEAR</h3><hr>
-									<ul>
-										<li><a href="{{route("collection")}}">> Swimsuits</a></li>
-										<li><a href="{{route("collection")}}">> Beach Clothing</a></li>
-										<li><a href="{{route("collection")}}">> Clothing</a></li>
-										<li><a href="{{route("collection")}}">> Bikinis</a></li>
-									</ul>
-								</div>
+								@endforeach
 			  				</div>
 						</div>
 						<div class="img_shop">

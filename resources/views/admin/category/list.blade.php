@@ -29,6 +29,7 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Tên loại hàng</th>
+                                <th>Tên không dấu</th>
                                 <th>Mô tả</th>
                                 <th>Hình ảnh</th>
                                 <th>Tình trạng</th>
@@ -42,6 +43,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $c->id }}</td>
                                 <td>{{ $c->name }}</td>
+                                <td>{{ $c->TenKhongDau }}</td>
                                 <td>{!! $c->description !!}</td>
                                 <td><img src="upload/category/{{$c->img_url}}" style="width: 200px"></td>
                                 <td>

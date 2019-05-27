@@ -41,8 +41,13 @@
                                 <td>{{ $r->id }}</td>
                                 <td>{{ $r->role }}</td>
                                 <td>{{ $r->created_at }}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('role.edit',$r->id)}}"> Edit</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('role.delete',$r->id)}}">Delete</a></td>
+                                @if($auth->role_id == 1)
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('role.edit',$r->id)}}"> Edit</a></td>
+                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('role.delete',$r->id)}}">Delete</a></td>
+                                @else
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i>Bạn ko có quyền sửa</td>
+                                    <td class="center"><i class="fa fa-pencil fa-fw"></i>Bạn ko có quyền xóa</td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
