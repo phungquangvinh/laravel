@@ -30,7 +30,7 @@
 
                 @foreach($category as $c)
                     <div class="mySlide fade">
-                        <img src="upload/category/{{$c->img_url}}" style="max-width: 400px; height: 300px">
+                        <img src="{{asset('upload/category/'.$c->img_url)}}" style="max-width: 400px; height: 300px">
                     </div>
                 @endforeach                   
             </div>
@@ -48,7 +48,7 @@
         <div class="promotions">
             <div class="img_pro">
                 <a href="{{route('detail',['id' => $pro->id, 'TenKhongDau' => $pro->TenKhongDau])}}">
-                    <img src="upload/product/{{$pro->img_url}}">
+                    <img src="{{asset('upload/product/'.$pro->img_url)}}">
                 </a>
             </div>
             <div class="slideshow-container">
@@ -59,7 +59,7 @@
                                 <div class="item-product">
                                     <div class="product-thumb">
                                         <a class="product-thumb-link" href="{{route('detail',['id' => $p->id, 'TenKhongDau' => $p->TenKhongDau])}}">
-                                            <img class="first-thumb" alt="" src="upload/product/{{$p->img_url}}">
+                                            <img class="first-thumb" alt="" src="{{asset('upload/product/'.$p->img_url)}}">
                                             <p style="color: #000;">{{$p->product}}</p>
                                             <span>
                                                 @if($p->sale_price == 0)
@@ -70,7 +70,7 @@
                                                     <del>{{ $p->price }} VND</del> <b style="color: red">Free!</b>
                                                 @endif 
                                             </span>
-                                            <img class="second-thumb" alt="" src="upload/product/{{$p->img_url}}">
+                                            <img class="second-thumb" alt="" src="{{asset('upload/product/'.$p->img_url)}}">
                                         </a>
                                         <div class="product-info-cart">
                                             <div class="product-extra-link">

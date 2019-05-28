@@ -163,8 +163,8 @@ Route::group(['prefix'=>'admin', 'middleware' => 'adminLogin'], function(){
 	});
 });
 
-//search
-Route::get('search', 'MyController@search');
+//tìm kiếm
+Route::get('search', [ 'as' => 'search', 'uses' => 'MyController@search']);
 
 //người dùng, member
 Route::group(['prefix'=>'user'], function(){

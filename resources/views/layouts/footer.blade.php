@@ -31,15 +31,15 @@
 		<div class="our_contact">
 			<h3><b>LIÊN HỆ VỚI CHÚNG TÔI</b></h3>
 			<div class="place">				
-				<p><img src="images/02_Homepage_01_76.png">Thái Nguyên, Việt Nam</p>
+				<p><img src="{{asset('images/02_Homepage_01_76.png')}}">Thái Nguyên, Việt Nam</p>
 				<p>123A Quang Trung</p>
 			</div><br>
 			<div class="phone">				
-				<p><img src="images/02_Homepage_01_79.png">(123) 123.456.7890</p>
+				<p><img src="{{asset('images/02_Homepage_01_79.png')}}">(123) 123.456.7890</p>
 				<p>(123) 123.456.7890</p>
 			</div><br>
 			<div class="inbox">
-				<img src="images/02_Homepage_01_82.png">
+				<img src="{{asset('images/02_Homepage_01_82.png')}}">
 				<a href="https://facebook.com" target="_blank">Support@casetheme.com</a>
 				<a href="https://facebook.com" target="_blank">Admin@casetheme.com</a>
 			</div>

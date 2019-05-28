@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="slider-product">
-	<img style="height: 400px; margin-left: 40px" src="../../upload/product/{{$product->img_url}}"></a>
+	<img style="height: 400px; margin-left: 40px" src="{{asset('upload/product/'.$product->img_url)}}"></a>
 </div>
 <br><br>
 <div class="detail" style="width: 400px; margin-left: 40px">

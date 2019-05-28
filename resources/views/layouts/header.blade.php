@@ -1,18 +1,18 @@
 <div id="header">
 	<div class="logo">
 		<a href="{{route("index")}}">
-			<img src="images/02_Homepage_01_03.png">
+			<img src="{{asset('images/02_Homepage_01_03.png')}}">
 		</a>				
 	</div>
 	<div class="icon_top">
 		<div class="search">
-			<span style="cursor:pointer" onclick="open_Nav()"><img src="images/02_Homepage_01_06.png"></span>
+			<span style="cursor:pointer" onclick="open_Nav()"><img src="{{asset('images/02_Homepage_01_06.png')}}"></span>
 		</div>
 		<div class="sale">
-			<span style="cursor:pointer" onclick="openNav1()"><img src="images/02_Homepage_01_08.png"></span>
+			<span style="cursor:pointer" onclick="openNav1()"><img src="{{asset('images/02_Homepage_01_08.png')}}"></span>
 		</div>
 		<div class="menu_hover">
-			<span style="cursor:pointer" onclick="openNav()"><img src="images/02_Homepage_01_10.png"></span>
+			<span style="cursor:pointer" onclick="openNav()"><img src="{{asset('images/02_Homepage_01_10.png')}}"></span>
 		</div>
 	</div>
 	<div class="menu_bar">
@@ -83,7 +83,7 @@
 			  				</div>
 						</div>
 						<div class="img_shop">
-							<img src="images/20_Hover_Mega_menu_03.png">
+							<img src="{{asset('images/20_Hover_Mega_menu_03.png')}}">
 						</div>
 			  		</div>								
 				</div>
@@ -105,7 +105,7 @@
 			  				</div>
 						</div>
 						<div class="img_shop">
-							<img src="images/20_Hover_Mega_menu_03.png">
+							<img src="{{asset('images/20_Hover_Mega_menu_03.png')}}">
 						</div>
 			  		</div>								
 				</div>
