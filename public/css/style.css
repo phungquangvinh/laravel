@@ -116,7 +116,7 @@ img {
 	float: right;
 }
 .block_static, .new_product, .feature_items, .lastest_news, .news_letters{
-	margin: 50px 150px;
+	margin: 50px 120px;
 }
 .block_static {
 	background-color: #f3f3f3;

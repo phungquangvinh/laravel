@@ -5,12 +5,13 @@
 @section('content')
 
 <div class="slider-product">
-	<img style="height: 400px; margin-left: 40px" src="{{asset('upload/product/'.$product->img_url)}}"></a>
+	<img style="height: 300px; margin-left: 40px" src="{{asset('upload/product/'.$product->img_url)}}"></a>
 </div>
 <br><br>
 <div class="detail" style="width: 400px; margin-left: 40px">
 	<b><h3>Tên sản phẩm: {{ $product->product }}</h3></b>
 	<p>Mô tả: {!! $product->description !!}</p>
+	<p>Số lượng: {!! $product->quality !!}</p>
 	<p>
 		Đơn giá: 
 		@if($product->sale_price == 0)
@@ -38,5 +39,6 @@
         @endif		
 	</p>
 	<a href="{{route('index')}}">Trở về trang chủ</a>
+	<a href="{{route('user.cart')}}">Thêm vào giỏ hàng</a>
 </div>
 @endsection

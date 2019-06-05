@@ -30,9 +30,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role', 'roles', 'role');
     }
-
-    // public function RoleUser()
-    // {
-    //     return $this->belongsTo('App\RoleUser', 'user_id', 'role_id');
-    // }
+    public function donhang()
+    {
+        return $this->belongsToMany('App\Models\donhang', 'users', 'name', 'ten_user');
+    }
 }

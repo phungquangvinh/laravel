@@ -161,6 +161,24 @@ Route::group(['prefix'=>'admin', 'middleware' => 'adminLogin'], function(){
 			'uses' => 'SlideController@getDelete'
 		]);
 	});
+
+	Route::group(['prefix'=>'donhang'], function(){
+		Route::get('list', [
+			'as' => 'donhang.list',
+			'uses' => 'DonHangController@list'
+		]);
+
+	    Route::get('/edit/{id}', [
+			'as' => 'donhang.edit',
+			'uses' => 'DonHangController@getEdit'
+		]);
+		Route::post('/edit/{id}', 'DonHangController@postEdit');
+
+		Route::get('/delete/{id}', [
+			'as' => 'donhang.delete',
+			'uses' => 'DonHangController@getDelete'
+		]);
+	});
 });
 
 //tìm kiếm
